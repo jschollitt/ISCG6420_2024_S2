@@ -1,0 +1,44 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.clear::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+html,
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #000;
+    background-color: #f1f1f1;
+}
+
+body {
+    margin-top: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    gap: 12.5px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+.grid-tile {
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    aspect-ratio: 1;
+    overflow: scroll;
+}
