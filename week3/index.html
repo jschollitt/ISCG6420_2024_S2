@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <header>
+        <div class="grid">
+            <div></div>
+            <nav>
+                <a href="../index.html">Home</a>
+            </nav>
+            <div></div>
+        </div>
+        <h1>Week 3: JavaScript</h1>
+    </header>
+    <div class="grid">
+        <div>
+        </div>
+        <main>
+            <section>
+                <h2>Console log output</h2>
+                <div id="printField"></div>
+            </section>
+
+            <section>
+                <h2>Data to work with</h2>
+                <p id="sampleSentance" class="sampleData">This is sample text for you to use while testing JavaScript.</p>
+                <p id="sampleNumber"class="sampleData">123456</p>
+                <p id="sampleBoolean"class="sampleData">true</p>
+                <p id="sampleArray"class="sampleData">a,b,c,d,e,f</p>
+            </section>
+
+            <section class="exercise1">
+                <h2>JS Calculator Exercise</h2>
+                <table>
+                  <thead>
+                    <th>Number 1</th>
+                    <th>Operator</th>
+                    <th>Number 2</th>
+                    <th></th>
+                    <th>Result</th>
+                  </thead>
+                  <tr>
+                    <td>
+                      <input type="number" id="calcNum1" class="calc-input"/>
+                    </td>
+                    <td>
+                      <button id="btnAdd" class="btn-operator">Add</button>
+                      <button id="btnSubtract" class="btn-operator">Subtract</button>
+                      <button id="btnMultiply" class="btn-operator">Multiply</button>
+                      <button id="btnDivide" class="btn-operator">Divide</button>
+                    </td>
+                    <td>
+                      <input type="number" id="calcNum2" class="calc-input"/>
+                    </td>
+                    <td>
+                      =
+                    </td>
+                    <td>
+                      <h3 id="calcResult"></h3>
+                    </td>
+                  </tr>
+                </table>
+              </section>
+        </main>
+        <div>
+        </div>
+    </main>
+</body>
+<script src="./app.js"></script>
+</html>
