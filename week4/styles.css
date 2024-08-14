@@ -340,3 +340,75 @@ section {
         visibility: visible;
     }
 }
+
+/* In-class scene demonstration */
+#animContainer {
+    display: block;
+    position: relative;
+    border: 1px solid #000;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+
+#animImage {
+    width: 800px;
+    left: -400px;
+    visibility: hidden;
+    position: absolute;
+    animation-name: image-move;
+    animation-duration: 8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+#animImage2 {
+    width: 400px;
+    visibility: visible;
+    position: absolute;
+    animation-name: image2-move;
+    animation-timing-function: ease-in-out;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes image-move {
+    0% {
+        left: -400px;
+        visibility: visible;
+    }
+
+    49.9999% {
+        left: 0px;
+        visibility: visible;
+    }
+
+    50% {
+        visibility: hidden;
+    }
+
+    100% {
+        visibility: hidden;
+    }
+}
+
+@keyframes image2-move {
+    0% {
+        top: -500px;
+        visibility: hidden;
+    }
+
+    49.9999% {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: visible;
+    }
+
+    100% {
+        top: 0px;
+        visibility: visible;
+    }
+}

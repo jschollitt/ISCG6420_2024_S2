@@ -43,15 +43,24 @@ h1 {
     gap: 12.5px;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 }
+
 .grid-tile {
     border: 2px solid #aaa;
     border-radius: 5px;
     aspect-ratio: 1;
     overflow: auto;
     max-width: 300px;
-    display: flex;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     justify-content: center;
     align-content: center;
+}
+
+.grid-tile>a {
+    min-width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /* Screen width larger than 1280px */
@@ -59,6 +68,7 @@ h1 {
     main {
         max-width: 1200px;
     }
+
     .grid-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
