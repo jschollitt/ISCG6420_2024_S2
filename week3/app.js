@@ -2,22 +2,15 @@ window.onload = function () {
     // ignore this for now
     consoleRedirect();
 
+    ////// JavaScript fundamentals exercise //////
     // Add your code below this line
 
-    let element = document.getElementById("sampleSentance");
-    element.innerText = "This is a new string.";
-
-    let elements = Array.from(document.getElementsByClassName("sampleData"));
-
-    for (let i = 0; i < elements.length; i++) {
-        console.log(elements[i].innerText);
-    }
 
     // Add your code above this line
 
 
 
-    
+    ////// JavaScript Calculator exercise //////
     
     // Add click event listeners to each of the calculator operation buttons,
     // and add a function to the events. 
@@ -36,7 +29,6 @@ window.onload = function () {
     // the numbers, and store the output value in the result field. 
     function add() {
         calcResult.innerHTML = Number(calcField1.value) + Number(calcField2.value);
-        console.log(`${calcField1.value} + ${calcField2.value} = ${calcResult.innerText}`);
     }
 
     function subtract() {
