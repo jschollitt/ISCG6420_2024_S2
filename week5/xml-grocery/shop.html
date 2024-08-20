@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <title>Shop</title>
+</head>
+
+<body>
+    <script>
+        function product(productName, price, image) {
+            this.productName = productName;
+            this.price = price;
+            this.image = image;
+        }
+
+        var products = [];
+
+        xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("GET", "product_list.xml", false);
+        xmlhttp.send();
+        xmlDoc = xmlhttp.responseXML;
+        let x = xmlDoc.getElementsByTagName("Product");
+
+        let pName = '';
+        let pPrice = 0;
+        let pImage = '';
+        for (let i = 0; i < x.length; i++) {
+            pName = x[i].getElementsByTagName("ProductName")[0].childNodes[0].nodeValue;
+            pPrice = Number(x[i].getElementsByTagName("Price")[0].childNodes[0].nodeValue);
+            pImage = x[i].getElementsByTagName("Image")[0].childNodes[0].nodeValue;
+            let prod = new product(pName, pPrice, pImage);
+            products[i] = prod;
+        }
+
+        function show_products() {
+            let displayText = '';
+            let table = document.getElementById("dispProduct");
+
+            for (let i = 0; i < products.length; i++) {
+                let row = table.insertRow(i);
+                let cell1 = row.insertCell(0);
+                let cell2 = row.insertCell(1);
+                let cell3 = row.insertCell(2);
+                let cell4 = row.insertCell(3);
+                let cellName = 's' + i;
+
+                cell4.setAttribute("name", cellName);
+                cell1.innerHTML = products[i].productName;
+                cell2.innerHTML = '$' + products[i].price;
+                cell3.innerHTML = '<img src=images/' + products[i].image + ' />';
+
+                let checkbox = document.createElement("input");
+                let cname = 'ch' + i;
+                checkbox.setAttribute("type", "checkbox");
+                checkbox.setAttribute("name", i);
+                checkbox.setAttribute("id", cname);
+                checkbox.setAttribute("value", products[i].price);
+                checkbox.checked = false;
+                checkbox.setAttribute('onclick', 'myChange(this.value, this.name)');
+                cell4.appendChild(checkbox);
+
+                let cell5 = row.insertCell(4);
+                let cellName5 = 'ss' + i;
+                cell5.setAttribute('name', cellName5); // this is for quantity
+                let quantityInput = document.createElement('input');
+                let qname = 'q' + i;
+                quantityInput.setAttribute('type', 'number');
+                quantityInput.setAttribute('name', qname);
+                quantityInput.setAttribute('id', qname);
+                quantityInput.setAttribute('style', 'width:35px;');
+                cell5.appendChild(quantityInput);
+            }
+        }
+
+        function calculate_cost() {
+            let result = '';
+            let ncheckbox = '';
+            let qinput = '';
+            let total = 0;
+
+            for (let i = 0; i < products.length; i++) {
+                ncheckbox = 'ch' + i;
+                qinput = 'q' + i;
+                let x = document.getElementById(ncheckbox);
+                if (x.checked) {
+                    total = total + Number(x.value) * Number(document.getElementById(qinput).value);
+                }
+            }
+            document.getElementById("calcost").innerHTML = "Total to pay: $" + total;
+        }
+
+        function myChange(val, qn) {
+            if (document.getElementById('ch' + qn).checked) {
+                document.getElementById('q' + qn).value = 1;
+            }
+            else {
+                document.getElementById('q' + qn).value = 0;
+            }
+        }
+    </script>
+    <h1>Shop</h1>
+    <button type="button" onclick="show_products()">display all products</button>
+    <table id="dispProduct">
+    </table>
+    <button type="button" onclick="calculate_cost()">Calculate Total</button>
+    <p id="calcost"></p>
+</body>
+
+</html>

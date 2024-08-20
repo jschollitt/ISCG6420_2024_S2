@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 5</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header>
+    <div class="grid">
+      <div></div>
+      <nav>
+        <a href="../index.html">Home</a>
+      </nav>
+      <div></div>
+    </div>
+    <h1>Week 5: Multi-Page Forms, JS Intervals, XML</h1>
+  </header>
+  <div class="grid">
+    <div>
+    </div>
+    <main>
+      <section>
+        <h2>Multi-Page Forms</h2>
+        <div class="grid-2c">
+          <div class="container-half card">
+            <progress value="10" max="100"></progress>
+            <div id="form-page1" class="form-page" style="display: block">
+              <div> <!-- page title -->
+                <h3>Personal Details</h3>
+              </div>
+              <div> <!-- page input fields -->
+                <label for="firstName" class="row">
+                  First Name:
+                  <input type="text" id="name-first" />
+                </label>
+                <label for="lastName" class="row">
+                  Last Name:
+                  <input type="text" id="name-last" />
+                </label>
+              </div>
+              <div> <!-- page nav buttons -->
+                <button class="next" type="button" onclick="showPage(2)">
+                  Next Page
+                </button>
+              </div>
+            </div>
+            <div id="form-page2" class="form-page" style="display: none">
+              <div> <!-- page title -->
+                <h3>Vehicle Details</h3>
+              </div>
+              <div> <!-- page input fields -->
+                <div> <!-- radio button input -->
+                  <label for="vehicle-sedan">
+                    <input type="radio" id="vehicle-sedan" name="vehicle" value="Sedan" checked="true" />
+                    Van
+                  </label>
+                  <label for="vehicle-SUV">
+                    <input type="radio" id="vehicle-suv" name="vehicle" value="SUV" />
+                    SUV
+                  </label>
+                </div>
+                <div> <!-- select box input -->
+                  <label for="vehicle-make">
+                    Make:
+                    <select>
+                      <option value="Toyota">Toyota</option>
+                      <option value="Mazda">Mazda</option>
+                      <option value="Honda">Honda</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div> <!-- page nav buttons -->
+                <button class="next" type="button" onclick="showPage(3)">
+                  Next Page
+                </button>
+                <button class="previous" type="button" onclick="showPage(1)">
+                  Previous Page
+                </button>
+              </div>
+            </div>
+            <div id="form-page3" class="form-page" style="display: none;">
+              <div> <!-- page title -->
+                <h3>Summary</h3>
+              </div>
+              <div> <!-- page data fields -->
+                <div class="row">
+                  Name: <span id="summary-name"></span>
+                </div>
+                <div class="row">
+                  Vehicle: <span id="summary-vehicle"></span>
+                </div>
+              </div>
+              <div> <!-- page nav buttons -->
+                <button class="previous" type="button" onclick="showPage(2)">
+                  Previous Page
+                </button>
+                <button class="next" type="button" onclick="submitData()">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="container-half card" style="overflow: scroll">
+            <table id="collected-data">
+              <thead>
+                <td>Name</td>
+                <td>Vehicle</td>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Using DOM on a table</h2>
+        <iframe src="./tableDOM/tableDOM.html" title="iframe"></iframe>
+      </section>
+      <section>
+        <h2>XML Book Shop</h2>
+        <iframe src="./xml-bookshop/ShoppingCart.html" title="iframe"></iframe>
+      </section>
+      <section>
+        <h2>XML Shopping Cart</h2>
+        <iframe src="./xml-grocery/shop.html" title="iframe"></iframe>
+      </section>
+      <section>
+        <h2>XML IT Company</h2>
+        <iframe src="./xml-company/ITCompany.html" title="iframe"></iframe>
+      </section>
+    </main>
+    <div>
+    </div>
+    </main>
+</body>
+<script src="./app.js"></script>
+
+</html>
