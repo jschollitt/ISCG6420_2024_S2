@@ -1,5 +1,6 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,29 +40,26 @@
 
         }
         let staffArray = []; //Array declaration - empty, and it will be load from XML file
-        // XML -The XMLHttpRequest object is used to exchange data with a server behind the scenes.
 
-        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        }
-        else {// code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.open("GET", "staff_list.xml", false);
-        xmlhttp.send();
-        xmlDoc = xmlhttp.responseXML;
-        let x = xmlDoc.getElementsByTagName("Staff");
+        fetch("staff_list.xml")
+        .then(response => response.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(xml => processXML(xml));
 
-        let sName = '';
-        let sPos = '';
-        let sImage = '';
-        for (i = 0; i < x.length; i++) {
-            sName = x[i].getElementsByTagName("StaffName")[0].childNodes[0].nodeValue;
-            sPos = x[i].getElementsByTagName("Position")[0].childNodes[0].nodeValue;
-            sImage = x[i].getElementsByTagName("Image")[0].childNodes[0].nodeValue;
+        function processXML(xmlDoc) {
+            let x = xmlDoc.getElementsByTagName("Staff");
 
-            let onePerson = new staff(sName, sPos, sImage);
-            staffArray[i] = onePerson;
+            let sName = '';
+            let sPos = '';
+            let sImage = '';
+            for (i = 0; i < x.length; i++) {
+                sName = x[i].getElementsByTagName("StaffName")[0].childNodes[0].nodeValue;
+                sPos = x[i].getElementsByTagName("Position")[0].childNodes[0].nodeValue;
+                sImage = x[i].getElementsByTagName("Image")[0].childNodes[0].nodeValue;
+
+                let onePerson = new staff(sName, sPos, sImage);
+                staffArray[i] = onePerson;
+            }
         }
 
         function display_staff() {
