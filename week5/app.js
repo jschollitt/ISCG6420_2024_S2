@@ -1,3 +1,26 @@
+window.onload = () => {
+    const paragraph = document.getElementById('demoParagraph');
+    document.getElementById('btn-toggleParagraphBG').addEventListener("click", (event) => {
+        if (paragraph.style.backgroundColor == 'red') {
+            paragraph.style.backgroundColor = 'white';
+        }
+        else {
+            paragraph.style.backgroundColor = 'red';
+        }
+    });
+
+    document.getElementById('btn-toggleParagraphFontSize').addEventListener("click", (event) => {
+        if (paragraph.style.fontSize == '10px') {
+            paragraph.style.fontSize = '20px';
+        }
+        else {
+            paragraph.style.fontSize = '10px';
+        }
+    });
+
+
+}
+
 const formPage1 = document.getElementById("form-page1");
 const formPage2 = document.getElementById("form-page2");
 const formPage3 = document.getElementById("form-page3");
