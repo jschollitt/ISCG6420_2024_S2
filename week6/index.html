@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 6</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header>
+    <div class="grid">
+      <div></div>
+      <nav>
+        <a href="../index.html">Home</a>
+      </nav>
+      <div></div>
+    </div>
+    <h1>Week 6: Canvas</h1>
+  </header>
+  <div class="grid">
+    <div>
+    </div>
+    <main>
+      <section>
+        <h2>Drawing Paths on Canvas</h2>
+
+        <div class="grid-2c">
+          <canvas id="canvas1" width="400" height="300">
+            Your browser does not support HTML5 Canvas.
+          </canvas>
+          <canvas id="canvas2" width="400" height="300">
+            Your browser does not support HTML5 Canvas.
+          </canvas>
+        </div>
+
+      </section>
+      <section>
+        <h2>Gradients</h2>
+        <form>
+          <label class="container">Vertical
+            <input type="radio" checked="checked" name="radio" oninput="SetGradientDir(1)">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Horizontal
+            <input type="radio" name="radio" oninput="SetGradientDir(2)">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Diagonal A
+            <input type="radio" name="radio" oninput="SetGradientDir(3)">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container">Diagonal B
+            <input type="radio" name="radio" oninput="SetGradientDir(4)">
+            <span class="checkmark"></span>
+          </label>
+        </form>
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange" oninput="SliderUpdate(this)">
+        </div>
+        <canvas id="canvas3" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+      </section>
+      <section>
+        <h2>Interval animation</h2>
+        <canvas id="canvas4" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+      </section>
+      <section>
+        <h2>Media Animations</h2>
+        <canvas id="canvas5" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+        <canvas id="canvas6" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+        <div style="visibility: hidden; display: none;">
+          <img src="./assets/PaparoaTrack1.PNG" id="canvas4Img1" />
+          <img src="./assets/PaparaoTrack2.PNG" id="canvas4Img2" />
+        </div>
+      </section>
+      <section>
+        <h2>Spiral Animation</h2>
+        <canvas id="canvas7" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+      </section>
+      <section>
+        <h2>Face Animation using Intervals</h2>
+        <canvas id="canvas8" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+      </section>
+      <section>
+        <h2>Basic Mouse Input</h2>
+        <canvas id="canvas9" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+      </section>
+      <section>
+        <h2>Partial Cleared Animation</h2>
+        <canvas id="canvas10" width="960" height="540">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
+      </section>
+    </main>
+</body>
+<script src="./app.js"></script>
+
+</html>
