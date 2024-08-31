@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 7</title>
+  <link rel="stylesheet" href="./styles.css" />
+
+  <script src="https://kit.fontawesome.com/5cca347ecc.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <div class="grid">
+      <div></div>
+      <nav>
+        <a href="../index.html">Home</a>
+      </nav>
+      <div></div>
+    </div>
+    <h1>Week 7: Canvas Events, Detection</h1>
+  </header>
+  <div class="grid">
+    <div>
+    </div>
+    <main>
+      <section>
+        <h2 class="underline">Keyboard movement without Canvas</h2>
+        <subtitle>Use [W, A, S, D] keys to move the logo (click to focus)</subtitle>
+        <div id="logoBox" tabindex="1">
+          <img style="background-color: black; width: 200px; height: auto; position: absolute;"
+            src="https://www.unitec.ac.nz/sites/all/themes/project/img/icons/unitec_te_pukenga.svg" />
+        </div>
+        <script src="./js/moveLogo.js"></script>
+      </section>
+  
+      <section class="txt-center">
+        <h2 class="underline">Event Propagation</h2>
+        <subtitle class="txt-center">Click the nested elements to see propagation in action</subtitle>
+        <div id="bubbling-div" class="center bubble-demo">
+          This is a div - Capture phase
+          <article id="bubbling-article" class="center bubble-demo">
+            This is an article - Bubbling phase
+            <p id="bubbling-p" class="center bubble-demo">
+              This is a paragraph - Bubbling phase
+            </p>
+          </article>
+        </div>
+        <script src="./js/bubbling.js"></script>
+      </section>
+  
+      <section id="section1">
+        <h2 class="underline">Handling Key Events</h2>
+        <div class="grid-2c">
+          <div class="center">
+            <subtitle>Draw on Key Down Event (W,A,S,D)</subtitle>
+            <canvas id="w7canvas1" width="400" height="400"></canvas>
+          </div>
+          <div class="center">
+            <subtitle>Draw Constantly, Update on Key Down (W,A,S,D)</subtitle>
+            <canvas id="w7canvas2" width="400" height="400"></canvas>
+          </div>
+        </div>
+        
+        <script src="./js/keyDown.js"></script>
+      </section>
+  
+      <section>
+        <h2 class="underline">Focused Keyboard Input</h2>
+        <div class="center">
+          <subtitle>Click inside the canvas to begin listening to key events (Arrow Keys)</subtitle>
+          <canvas id="w7canvas3" width="800" height="400" tabindex="3"></canvas>
+        </div>
+        <script src="./js/keyEventFocus.js"></script>
+      </section>
+  
+      <section>
+        <h2 class="underline">Handling Mouse Input</h2>
+        <div class="grid-2c">
+          <div class="center">
+            <subtitle>Draw on Mouse Click Event</subtitle>
+            <canvas id="w7canvas4" width="400" height="400"></canvas>
+          </div>
+          <div class="center">
+            <subtitle>Follow the Cursor, Scroll to Resize</subtitle>
+            <canvas id="w7canvas5" width="400" height="400"></canvas>
+          </div>
+        </div>
+        <script src="./js/mouseInput.js"></script>
+      </section>
+  
+      <section>
+        <h2 class="underline">Handling Mouse Input</h2>
+        <div class="center">
+          <subtitle>Create Object on Click</subtitle>
+          <canvas id="w7canvas6" width="800" height="400"></canvas>
+        </div>
+        <script src="./js/gameObject.js"></script>
+        <script src="./js/gameEngine.js"></script>
+      </section>
+  
+      <section>
+        <h2 class="underline">Adding Sound</h2>
+        <div class="center">
+          <button id="bgAudioPlay" type="button" >Play / Pause Background Audio</button>
+          <button id="actionAudioPlay" type="button">Play Action Audio</button>
+        </div>
+        <script src="./js/sound.js"></script>
+      </section>
+  
+      <section>
+        <h2 class="underline">Exercise: Logo Animation</h2>
+        <div class="center">
+          <subtitle>Create Object on Click</subtitle>
+          <canvas id="w7canvas7" width="800" height="500" style="background-color: black;"></canvas>
+        </div>
+        <script src="./js/logoAnimation.js"></script>
+      </section>
+    </main>
+</body>
+<script src="./app.js"></script>
+
+</html>
