@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- areas -->
+     <xs:element name="areas">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- area 1 -->
+                 <xs:element name="area">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- area data goes here -->
+                             <xs:element name="id" type="xs:string"></xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                 </xs:element>
+
+                <!-- area 2 -->
+
+            </xs:sequence>
+        </xs:complexType>
+     </xs:element>
+</xs:schema>
