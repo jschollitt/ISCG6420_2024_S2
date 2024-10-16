@@ -94,36 +94,55 @@ function Ball(X, Y, radius, colour) {
         returnTimeDelta: 0,
         
         state: "ready",
-        update: function(tick) {
+
+        update: function (tick) {
             switch(this.state) {
                 case "launch":
+                    // check if target has been reached
                     if (this.position.x == this.target.x && this.position.y == this.target.y) {
                         this.state = "stay";
                         this.launchTimeDelta = 0;
                         break;
                     }
+                    // get progress on timeline as value between 0 and 1
+                    let launchTimePercent = this.launchTimeDelta / this.launchTime;
+                    // modify % using an easing function
+                    let easedLaunchDelta = easeOut(launchTimePercent)
+
+                    // update progress with update tick, clamp to valid number range
                     this.launchTimeDelta = clamp(this.launchTimeDelta + tick, 0, this.launchTime);
-                    this.position = lerpVector(this.origin, this.target, easeOut(this.launchTimeDelta / this.launchTime));
-                    this.radius
+                    // update position using linear interpolation and eased progress value
+                    this.position = lerpVector(this.origin, this.target, easedLaunchDelta);
                     break;
+
                 case "stay":
-                    console.log("stay", this.stayTimeDelta, this.stayTime);
+                    // check if time to stay has elapsed
                     if (this.stayTimeDelta >= this.stayTime) {
                         this.state = "return";
                         this.stayTimeDelta = 0;
                         break;
                     }
+                    // update progress with update tick, clamp to valid number range
                     this.stayTimeDelta = clamp(this.stayTimeDelta + tick, 0, this.stayTime);
                     break;
+
                 case "return":
+                    // check if return to origin is complete
                     if (this.position.x == this.origin.x && this.position.y == this.origin.y) {
                         this.state = "ready";
-                        this.origin = Object(this.position);
+                        this.origin = this.position;
                         this.returnTimeDelta = 0;
                         break;
                     }
+                    // get progress on timeline as value between 0 and 1
+                    let returnTimePercent = this.returnTimeDelta / this.returnTime;
+                    // modify % using an easing function
+                    let easedReturnDelta = easeIn(returnTimePercent);
+
+                    // update progress with update tick, clamp to valid number range
                     this.returnTimeDelta = clamp(this.returnTimeDelta + tick, 0, this.returnTime);
-                    this.position = lerpVector(this.target, this.origin, easeIn(this.returnTimeDelta / this.returnTime));
+                    // update position using linear interpolation and eased progress value
+                    this.position = lerpVector(this.target, this.origin, easedReturnDelta);
                     break;
             }
         },
@@ -134,7 +153,7 @@ function Ball(X, Y, radius, colour) {
             context.closePath();
             context.fill();
         },
-        launch: function(destinationX, destinationY) {
+        launch: function (destinationX, destinationY) {
             this.target = {x: destinationX, y: destinationY};
             this.state = "launch";
         },
