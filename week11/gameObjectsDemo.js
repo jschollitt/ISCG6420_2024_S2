@@ -43,7 +43,7 @@ function run(timeStamp) {
     tick = (timeStamp - lastTimeStamp);
     lastTimeStamp = timeStamp;
 
-    update(tick);
+    update();
     draw();
 
     window.requestAnimationFrame(run);
@@ -63,13 +63,14 @@ function draw() {
 }
 
 function doClick(event) {
-
+    if (balls[index].state !== "ready") {
+        return;
+    }
     let bounds = canvas.getBoundingClientRect();
     inCanvasX = Math.floor(event.clientX - bounds.left);
     inCanvasY = Math.floor(event.clientY - bounds.top);
     balls[index].launch(inCanvasX, inCanvasY);
     index = (index + 1 + balls.length) % balls.length;
-    console.log(balls);
 }
 
 function Ball(X, Y, radius, colour) {
@@ -84,8 +85,8 @@ function Ball(X, Y, radius, colour) {
         
         // time of each phase in ms. Must be above 0
         launchTime: 1000,
-        stayTime: 1000,
-        returnTime: 1000,
+        stayTime: 5000,
+        returnTime: 5000,
         
         // keep track of progress during each moving phase
         launchTimeDelta: 0,
@@ -94,10 +95,7 @@ function Ball(X, Y, radius, colour) {
         
         state: "ready",
         update: function(tick) {
-            //console.log(this.state, this.position);
             switch(this.state) {
-                case "ready":
-                    break;
                 case "launch":
                     if (this.position.x == this.target.x && this.position.y == this.target.y) {
                         this.state = "stay";
@@ -136,11 +134,8 @@ function Ball(X, Y, radius, colour) {
             context.closePath();
             context.fill();
         },
-        launch: function(destinationX, destinationY, launchTime = 2000, stayTime = 5000, returnTime = 1000) {
+        launch: function(destinationX, destinationY) {
             this.target = {x: destinationX, y: destinationY};
-            this.launchTime = launchTime;
-            this.stayTime = stayTime;
-            this.returnTime = returnTime;
             this.state = "launch";
         },
 
@@ -156,18 +151,15 @@ function lerpVector(origin, destination, time) {
         x: lerp(origin.x, destination.x, time),
         y: lerp(origin.y, destination.y, time)
     };
-    console.log("lerpVector", origin, destination, time, position);
     return position;
 }
 
 // Easing functions. See here: https://easings.net/
 function easeOut(time) {
-    // quad return 1 - (1 - time) * (1 - time);
     return 1 - Math.pow(1 - time, 3);
 }
 
 function easeIn(time) {
-    // quad return time * time;
     return Math.pow(time, 3);
 }
 
